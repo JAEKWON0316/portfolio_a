@@ -23,7 +23,11 @@ a:hover{
    width:1000px;
    max-width:100%;
    margin-left:300px;
-   padding:80px 40px;
+   padding:0 40px;
+}
+div, h1{  /*부트스트랩에서는 자동으로 마진이 있어서 빼준것*/
+   margin:0;
+   padding:0;
 }
 aside{
    width:300px;
@@ -36,18 +40,24 @@ aside{
    font-weight:700;
    font-size:1.1em;
    text-align:center;
-   margin-bottom:15px;
 }
 .title-desc{
    line-height:1.2;
    color:#Eedede;
    margin-bottom:70px;
 }
+.title-text{
+   transition: all 300ms ease;
+}
 .title-icon{
   font-size:1.8em;
   display:flex;
   justify-content: center;
   margin-bottom:10px;
+}
+.mobile-menu{
+   font-size:1.7em;
+   cursor:pointer;
 }
 .mynav{
    list-style-type:none;
@@ -63,12 +73,13 @@ aside{
 #about,#story,#project,#contact{
    margin-bottom:100px;
    min-height:800px;
+   padding-top:60px;
 }
 #about h1,
 #story h1,
 #project h1,
 #contact h1 {
-   width: 200px;
+   width: 204px;
    border-bottom:2px dashed rgba(255,255,255,0.7);
    margin-bottom:80px;
 }
@@ -76,6 +87,81 @@ aside{
    margin-top:20px;
    margin-bottom:20px;
 }
-.nav-active{
-
+.story{
+   padding-left:12px;
+}
+.history-box{
+   max-width:50%;
+   background-color:rgba(255,255,255,0.09);
+   padding:30px;
+   border-radius: 15px;
+   margin-top:40px;
+   margin-bottom:60px;
+   box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.15),
+               0 0 15px 0 rgba(0, 0, 0, 0.15);
+   position:relative;
+   transition: all 500ms ease-in-out;
+}
+.history-box:nth-child(odd){ /*홀수만 */
+   margin-left:80px;
+}
+.history-box::before{
+   content:"";
+   display:block;
+   height:1px;
+   width:52px;
+   left:-52px;
+   background-color:#af435c;
+   position:absolute;
+   top:50px;
+   transition: all 500ms ease-in-out;   
+}
+.history-box:nth-child(odd)::before{
+   width:133px;
+   left:-133px;
+}
+.history-box:hover{
+   margin-left: 30px;
+   background-color: rgba(255,255,255,0.15);
+}
+.history-box:hover::before{
+   width:80px;
+   left:-82px;
+}
+/* 반응형 */
+@media(max-width: 768px){ /*최대 768px 까지 즉, 작은화면 */
+   aside{
+      width:100%;
+      height:70px;
+      top:0;
+      left:0;
+      display:flex;
+      border:none;
+      border-bottom:1px solid #af435c;
+      padding:0 30px;
+      align-items:center;
+      justify-content: space-between;
+      position:fixed;
+      z-index:1000;
+      background:radial-gradient(circle at 20%, #682131, #220303);
+   }
+   .title-icon{
+      margin-bottom:0;
+   }
+   .mynav{
+      display:none;
+   }
+   .title-text{
+      position:absolute;
+      top: 35%;
+      left: 50%;
+      transform: translate(-50%);
+      padding:0;
+      margin:0;
+   }
+   .contents{
+      margin-left:0px;
+      margin-top:70px;
+      padding:0 40px;
+   }
 }

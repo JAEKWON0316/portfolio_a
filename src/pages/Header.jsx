@@ -7,8 +7,8 @@ const Header = () => {
            <div className="title-icon">
               <FcEngineering className="d-block" />
            </div>    
-           <div className="d-block">
-             <a href="#">WEIN'S PORTFOLIO SITE</a>
+           <div className="title-text">
+             <a href="#">JACK'S PORTFOLIO SITE</a>
            </div>   
        </h1>    
     </div>

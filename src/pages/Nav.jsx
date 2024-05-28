@@ -1,23 +1,17 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useContext} from 'react'
 import Menus from '../components/Menus'
+import { DataContext } from '../context/DataProvider';
+import { RiMenuFill } from "react-icons/ri";
 
 const Nav = () => {
-    const [menuItem, setMenuItem] = useState([]);
-    const [navActive, setNavActive] = useState(false);
-    useEffect(()=>{
-      fetch('./data/menu.json')
-      .then(res => res.json())
-      .then(data => 
-               setMenuItem(data.menu)
-      )
-      .catch(error=>console.error('데이터를 가져오는데 실패했습니다.' , error));
-    }, []);
-    console.table(menuItem);
+    const {menu} = useContext(DataContext); //data안에 menu
+    const [navActive, setNavActive] = useState('about');
+  
     return (
     <nav>
        <ul className="mynav">
        {
-         menuItem.map((item, index)=>(
+          menu.map((item, index)=>(
             <li key={index}>
                <Menus 
                   navtitle={item.name} 
@@ -27,7 +21,8 @@ const Nav = () => {
             </li>
          ))
        } 
-       </ul> 
+       </ul>
+       <div className="mobile-menu d-block d-md-none"><RiMenuFill /></div> 
     </nav>
   )
 }
